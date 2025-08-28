@@ -40,7 +40,7 @@ Additionally, a **global evaluation score** is maintained to display the **advan
 4. You can customize the AI's **search depth** (difficulty) using the dropdown:
    - Higher depth → smarter AI 🤖 (but slower).
 5. To pit **AI vs AI**:
-   - Click **Start Game** under *Computer vs Computer*.
+   - Click **Start Game** under *AI vs AI*.
    - Stop anytime using **Stop and Reset**.
 
 ---
