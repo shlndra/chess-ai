@@ -1,25 +1,79 @@
-# chess-ai
-A chess engine by someone who doesn't know how to play chess.
+# ♟️ chess-ai
 
-## About
-chess-ai is a simple chess AI in JavaScript. 
+> A chess engine by someone who doesn't know how to play chess 😄  
 
-The primary concern of chess-ai is the decision-making part of the application. All functionality outside the scope of the AI are implemented using external libraries:
-- Chessboard GUI: Using the chessboard.js API
-- Game Mechanics: Using the chess.js API
+---
 
-The AI uses the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax), which is optimised by [alpha-beta pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning). 
+## 📌 About
 
-The evaluation function uses [piece square tables](https://www.chessprogramming.org/Piece-Square_Tables) adapted from Sunfish.py, and eliminates the need for nested loops by updating the sum based on each move instead of re-computing the sum of individual pieces at each leaf node.
+**chess-ai** is a simple chess AI built using **JavaScript**.
 
-A global sum is used to keep track of black's evaluation score after each move, which is used to display the 'advantage' bar. 
+The primary focus of **chess-ai** is the **decision-making** logic of the AI.  
+All other functionalities outside the scope of AI are implemented using external libraries:
 
-## How to Play?
-1. Head over to https://zeyu2001.github.io/chess-ai/.
+- **Chessboard GUI:** [chessboard.js](https://chessboardjs.com/)
+- **Game Mechanics:** [chess.js](https://github.com/jhlywa/chess.js)
 
-2. Play as white by dragging a piece to your desired location. The AI plays as black. The AI's minimax search depth (which is directly related to how well it will play) can be customised using the 'Search Depth (Black)' dropdown. Using a higher value will improve the AI's accuracy, but it will take longer to decide on the next move.
+The AI uses the **[Minimax Algorithm](https://en.wikipedia.org/wiki/Minimax)** optimized with **[Alpha-Beta Pruning](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)** for better performance.  
 
-3. To pit the AI against itself, click the 'Start Game' button under Computer vs. Computer. You can stop the game at any time using the 'Stop and Reset' button.
+The evaluation function uses **[Piece-Square Tables](https://www.chessprogramming.org/Piece-Square_Tables)** adapted from **Sunfish.py**.  
+Instead of recalculating evaluations at every move, the algorithm **updates scores incrementally** for efficiency.  
 
-## License
-Use of this project is governed by the [MIT License](LICENSE).
+Additionally, a **global evaluation score** is maintained to display the **advantage bar**.
+
+---
+
+## 👨‍💻 Contributors
+
+| Name           | Contribution                                    |
+|---------------|--------------------------------------------------|
+| **Zhang Zeyu** | Original author and core implementation          |
+| **Shailender** | Fixed check detection logic & improved UI ✨      |
+
+---
+
+## 🕹️ How to Play?
+
+1. Go to **[Play Chess AI](https://zeyu2001.github.io/chess-ai/)**.
+2. Play as **White** by dragging a piece to your desired position.
+3. The AI plays as **Black**.
+4. You can customize the AI's **search depth** (difficulty) using the dropdown:
+   - Higher depth → smarter AI 🤖 (but slower).
+5. To pit **AI vs AI**:
+   - Click **Start Game** under *Computer vs Computer*.
+   - Stop anytime using **Stop and Reset**.
+
+---
+
+## 📜 License
+
+This project is licensed under the **[MIT License](LICENSE)**.  
+You are free to use, modify, and distribute the code.
+
+---
+
+## 🙌 Acknowledgement
+
+> This README now includes credit for **Shailender’s** contributions.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Language:** JavaScript
+- **Algorithm:** Minimax + Alpha-Beta Pruning
+- **Libraries:** chessboard.js, chess.js
+
+---
+
+## 🚀 How to Run Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/shlndra/chess-ai.git
+
+# Go into the project folder
+cd chess-ai
+
+# Open index.html in your browser
+open index.html
