@@ -313,7 +313,10 @@ function minimax(game, depth, alpha, beta, isMaximizingPlayer, sum, color) {
   }
 }
 
-function checkStatus(color) {
+function checkStatus() {
+  var color = game.turn() === 'w' ? 'white' : 'black';
+  var opponentColor = game.turn() === 'w' ? 'black' : 'white';
+  
   if (game.in_checkmate()) {
     $('#status').html(`<b>Checkmate!</b> Oops, <b>${color}</b> lost.`);
   } else if (game.insufficient_material()) {
@@ -325,6 +328,7 @@ function checkStatus(color) {
   } else if (game.in_draw()) {
     $('#status').html(`It's a <b>draw!</b> (50-move Rule)`);
   } else if (game.in_check()) {
+    // The player whose turn it is currently is in check
     $('#status').html(`Oops, <b>${color}</b> is in <b>check!</b>`);
     return false;
   } else {
@@ -400,31 +404,26 @@ function makeBestMove(color) {
   game.move(move);
   board.position(game.fen());
 
-  if (color === 'b') {
-    checkStatus('black');
+  // Update status - no need to pass color parameter
+  checkStatus();
 
+  if (color === 'b') {
     // Highlight black move
     $board.find('.' + squareClass).removeClass('highlight-black');
     $board.find('.square-' + move.from).addClass('highlight-black');
     squareToHighlight = move.to;
     colorToHighlight = 'black';
-
-    $board
-      .find('.square-' + squareToHighlight)
-      .addClass('highlight-' + colorToHighlight);
   } else {
-    checkStatus('white');
-
     // Highlight white move
     $board.find('.' + squareClass).removeClass('highlight-white');
     $board.find('.square-' + move.from).addClass('highlight-white');
     squareToHighlight = move.to;
     colorToHighlight = 'white';
-
-    $board
-      .find('.square-' + squareToHighlight)
-      .addClass('highlight-' + colorToHighlight);
   }
+
+  $board
+    .find('.square-' + squareToHighlight)
+    .addClass('highlight-' + colorToHighlight);
 }
 
 /*
@@ -624,7 +623,6 @@ function onDrop(source, target) {
 
   // Highlight latest move
   $board.find('.' + squareClass).removeClass('highlight-white');
-
   $board.find('.square-' + move.from).addClass('highlight-white');
   squareToHighlight = move.to;
   colorToHighlight = 'white';
@@ -633,9 +631,11 @@ function onDrop(source, target) {
     .find('.square-' + squareToHighlight)
     .addClass('highlight-' + colorToHighlight);
 
-  if (!checkStatus('black'));
-  {
-    // Make the best move for black
+  // Update status
+  checkStatus();
+  
+  // Make the best move for black if game is not over
+  if (!game.game_over()) {
     window.setTimeout(function () {
       makeBestMove('b');
       window.setTimeout(function () {
