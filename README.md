@@ -34,7 +34,7 @@ Additionally, a **global evaluation score** is maintained to display the **advan
 
 ## 🕹️ How to Play?
 
-1. Go to **[Play Chess AI](https://zeyu2001.github.io/chess-ai/)**.
+1. Go to **[Play Chess AI](https://shlndra.github.io/chess-ai/ ✅)**.
 2. Play as **White** by dragging a piece to your desired position.
 3. The AI plays as **Black**.
 4. You can customize the AI's **search depth** (difficulty) using the dropdown:
